@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AyanCare</string>
+    <string name="password_recovery">Recuperação de Senha</string>
+    <string name="information">Preencha os dados para realizar a recuperação de senha.</string>
+    <string name="email">E-mail</string>
+    <string name="new_password">Nova senha</string>
+    <string name="confirm_password">Confirmar senha</string>
+    <string name="send_button">Enviar</string>
+    <string name="redefine_button">Redefinir senha</string>
+    <string name="information_new_password">Digite sua nova senha</string>
+    <string name="sign_up">Sign up</string>
+</resources>
