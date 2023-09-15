@@ -1,14 +1,9 @@
-package br.senai.sp.jandira.ayancare
+package br.senai.sp.jandira.ayancare.ui.theme
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,12 +14,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -32,7 +24,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -40,29 +31,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.senai.sp.jandira.ayancare.ui.theme.AyanCareTheme
+import br.senai.sp.jandira.ayancare.R
+import br.senai.sp.jandira.ayancare.Wave
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            AyanCareTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    RecuperarSenha()
-                }
-            }
-        }
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun RecuperarSenha() {
+fun RecuperarSenha3() {
     var emailState = rememberSaveable {
         mutableStateOf("")
     }
@@ -96,7 +72,7 @@ fun RecuperarSenha() {
 
                 )
                 Text(
-                    text = stringResource(id = R.string.password_recovery),
+                    text = stringResource(id = R.string.redefine_button),
                     modifier = Modifier.padding(start = 17.dp),
                     fontSize = 32.sp,
                     color = Color.Black,
@@ -105,7 +81,7 @@ fun RecuperarSenha() {
 
                     )
                 Text(
-                    text = stringResource(id = R.string.information),
+                    text = stringResource(id = R.string.information_new_password),
                     modifier = Modifier.padding(start = 70.dp, end = 70.dp),
                     fontSize = 17.sp,
                     color = Color(160, 156, 156)
@@ -120,9 +96,29 @@ fun RecuperarSenha() {
                         .padding(start = 50.dp, end = 40.dp, top = 100.dp),
                     label = {
                         Text(
-                            text = stringResource(id = R.string.email), color = colorResource(
-                                id = R.color.lilac
-                            )
+                            text = stringResource(id = R.string.new_password)
+
+                        )
+                    },
+                    shape = RoundedCornerShape(18.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        containerColor = colorResource(
+                            id = R.color.white
+                        )
+
+                    )
+                )
+                OutlinedTextField(
+                    value = emailState.value,
+                    onValueChange = {
+                        emailState.value = it
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 50.dp, end = 40.dp),
+                    label = {
+                        Text(
+                            text = stringResource(id = R.string.confirm_password)
                         )
                     },
                     shape = RoundedCornerShape(18.dp),
@@ -158,17 +154,16 @@ fun RecuperarSenha() {
                     )
 
                 }
-                Wave()
-                    
+
+                Row (
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    Wave()
+                }
+
+
             }
         }
 
     }
 }
-
-
-
-
-
-
-
